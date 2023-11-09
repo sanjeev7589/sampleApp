@@ -1,0 +1,42 @@
+PROCEDURE "Update_by_id"(IN IN_PARAM nclob) AS 
+ BEGIN 
+  --MERGE INTO "employee" AS p USING (
+-- SELECT jt."first_name", jt."gender", jt."marital_status", TO_DATE(jt."dob"), jt."email", jt."mobile",
+-- TO_BIGINT(jt."created_by"), TO_TIMESTAMP(jt."created_on"), TO_BIGINT(jt."modified_by"),
+-- TO_TIMESTAMP(jt."modified_on"), TO_INTEGER(jt."status")
+--     FROM JSON_TABLE(
+--         :IN_PARAM,
+--         '$' COLUMNS (
+--           "first_name" NVARCHAR(255) PATH '$.first_name',
+--           "gender" NVARCHAR(255) PATH '$.gender',
+--           "marital_status" NVARCHAR(255) PATH '$.marital_status',
+--           "dob" DATE PATH '$.dob',
+--           "email" NVARCHAR(255) PATH '$.email',
+--           "mobile" NVARCHAR(255) PATH '$.mobile',
+--           "created_by" BIGINT PATH '$.created_by',
+--           "created_on" TIMESTAMP PATH '$.created_on',
+--           "modified_by" BIGINT PATH '$.modified_by',
+--           "modified_on" TIMESTAMP PATH '$.modified_on',
+--           "status" INTEGER PATH '$.status'
+--         )
+--       ) AS jt
+--   ) AS j
+--    ON p."id" = j."id"
+--   WHEN MATCHED THEN
+--   UPDATE
+--   SET p."first_name" = j."first_name",
+--     p."gender" = j."gender",
+--     p."marital_status" = j."marital_status",
+--     p."dob" = 2023-11-20,
+--     p."email" = j."email",
+--     p."mobile" = j."mobile",
+--     p."created_by" = j."created_by",
+--     p."created_on" = j."created_on",
+--     p."modified_by" = j."modified_by",
+--     p."modified_on" = j."modified_on",
+--     p."first_name" = j."first_name",
+--     p."status" = j."status"
+--     WHEN NOT MATCHED THEN
+--   INSERT ("first_name", "gender", "dob","email","mobile","created_by","created_on","modified_by","modified_on","first_name","status")
+--   VALUES (j."first_name", j."gender", j."dob",j."email",j."mobile",j."created_by",j."created_on",j."modified_by",j."modified_on",j."first_name",j."status");
+END;

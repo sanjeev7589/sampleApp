@@ -1,0 +1,4 @@
+CONSTRAINT employee_job_constraint 
+ON "employee_job_details" FOREIGN KEY ("employee_id") 
+REFERENCES "employee"("id") ON UPDATE CASCADE 
+

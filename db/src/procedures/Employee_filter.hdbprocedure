@@ -1,0 +1,55 @@
+-- PROCEDURE "filter_name"(IN NAME NVARCHAR(200)) AS
+-- BEGIN
+--   DECLARE dynamic_sql NVARCHAR(1000);
+--
+-- Define your parameters
+--   DECLARE QUERY NVARCHAR(2000) := '';
+--
+-- Construct the dynamic SQL statement
+--   dynamic_sql := 'SELECT * FROM "employee" WHERE';
+--
+-- Append the condition based on the value of QUERY
+--   IF :QUERY = '' THEN dynamic_sql := dynamic_sql || ' LOWER("first_name") LIKE ''%' || LOWER(:NAME) || '%''';
+--   ELSE dynamic_sql := dynamic_sql || ' LOWER("first_name") LIKE ''%' || LOWER(:NAME) || '%''';
+-- END IF;
+--
+-- Execute the dynamic SQL statement
+-- EXECUTE IMMEDIATE :dynamic_sql;
+--
+-- Now you can use the query_result table variable to work with the result
+--
+--SELECT * FROM :dynamic_sql;
+-- END;
+-- Create an HDB procedure with dynamic filtering
+-- PROCEDURE Dynamic_filter(
+--     IN filter_column NVARCHAR(50),
+--     -- Column to filter
+--     IN filter_value NVARCHAR(255) 
+--   -- Filter value
+--   ) 
+--   LANGUAGE SQLSCRIPT AS 
+-- BEGIN 
+--   -- Construct the SQL query dynamically
+--   DECLARE sql_query NVARCHAR(1000);
+--   sql_query := 'SELECT * FROM "employee" WHERE "' || :filter_column || '" = ?';
+--   -- Execute the SQL query
+--   EXECUTE IMMEDIATE :sql_query USING :filter_value;
+-- END;
+
+PROCEDURE Dynamic_filter(IN IN_PARAM NCLOB) AS
+
+BEGIN 
+  
+  -- temp_employee = 
+	-- SELECT jt.* FROM	
+	-- JSON_TABLE(
+	-- 	:IN_PARAM,
+	-- 	'$.details[*]' COLUMNS(
+	-- 	"id" INTEGER PATH '$.id')
+	-- ) AS jt;
+
+  -- DECLARE sql_query NVARCHAR(1000);
+  -- sql_query := 'SELECT * FROM "employee" WHERE "' || :filter_column || '" = ?';
+  -- -- Execute the SQL query
+  -- EXECUTE IMMEDIATE :sql_query USING :filter_value;
+END;
