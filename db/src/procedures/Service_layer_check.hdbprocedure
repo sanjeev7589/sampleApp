@@ -1,0 +1,4 @@
+PROCEDURE "get_All_Employees"() AS
+BEGIN 
+SELECT "id","first_name","gender" FROM "employee";
+END
