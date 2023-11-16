@@ -18,9 +18,9 @@ public class Employee_Controller {
         return new ResponseEntity<>(EmployeeService.getAllEmployees(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/sample", method = RequestMethod.GET)
-    public ResponseEntity<?> getCompaniesSample() {
-        return new ResponseEntity<>(EmployeeService.getAllEmployeesjpa(), HttpStatus.OK);
-    }
+    // @RequestMapping(value = "/sample", method = RequestMethod.GET)
+    // public ResponseEntity<?> getCompaniesSample() {
+    //     return new ResponseEntity<>(EmployeeService.getAllEmployeesjpa(), HttpStatus.OK);
+    // }
 
 }

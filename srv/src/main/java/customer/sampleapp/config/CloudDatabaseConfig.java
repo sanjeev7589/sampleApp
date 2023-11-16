@@ -11,11 +11,23 @@ import com.zaxxer.hikari.HikariDataSource;
 @Configuration
 @Profile("cloud")
 public class CloudDatabaseConfig extends AbstractCloudConfig{
-    @Bean
-	public DataSource dataSource(@Value("${hana.url}")final String url,
-			@Value("${hana.user}")final String user,
-			@Value("${hana.password}")final String password) {
+	String url = "jdbc:sap://da77a3f3-de43-484e-82a9-606d75db0b77.hana.trial-us10.hanacloud.ondemand.com:443?encrypt=true&validateCertificate=true&currentschema=SAMPLEAPP_HDI_DB_1";
+	String user = "SAMPLEAPP_HDI_DB_1_C4NTGHOO2BAMIBRCNLKAYA861_RT";
+	String password = "Je30TIr9Fdk8eluc2JVQA8mgSRlrQfTJ_JAmxgXscI8TB8aZLT8AJ3jbHKWhxRFeS0zEb_uztTRVhMZOylZ1Z3DGoqgIwTA-2z6Ezz_tOVVmJoIbObtY5QYMjtQ3vAkA";
+    // @Bean
+	// public DataSource dataSource(@Value("${han.url}")final String url,
+	// 		@Value("${hana.user}")final String user,
+	// 		@Value("${hana.password}")final String password) {
 
+	// 	return DataSourceBuilder.create()
+	// 			.type(HikariDataSource.class)
+	// 			.driverClassName(com.sap.db.jdbc.Driver.class.getName())
+	// 			.url(url)
+	// 			.username(user)
+	// 			.password(password)
+	// 			.build();	
+	// }
+	public DataSource dataSource() {
 		return DataSourceBuilder.create()
 				.type(HikariDataSource.class)
 				.driverClassName(com.sap.db.jdbc.Driver.class.getName())
@@ -23,7 +35,6 @@ public class CloudDatabaseConfig extends AbstractCloudConfig{
 				.username(user)
 				.password(password)
 				.build();	
-
 	}
 }
 // package customer.sampleapp.config;

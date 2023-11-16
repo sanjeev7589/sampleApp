@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
-@Repository
+// @Repository
 @Transactional
 public class Employee_DAO {
     @PersistenceContext
@@ -21,17 +21,14 @@ public class Employee_DAO {
         try {
  List<Employee> results = new ArrayList<Employee>();
             if (entityManager != null) {
-                // Use the entityManager here...
                   StoredProcedureQuery spEmployees = entityManager
-                    .createStoredProcedureQuery("get_All_Employees", "employee");
+                    .createStoredProcedureQuery("get_All_Employees", "employee_mapping");
             spEmployees.execute();
             @SuppressWarnings("unchecked")
             List<Employee> tempResults = spEmployees.getResultList();
             results.addAll(tempResults);
             } 
-            // else {
-            //     // Log or handle the case when entityManager is null...
-                
+            // else {      
             // }
 
            return results;
