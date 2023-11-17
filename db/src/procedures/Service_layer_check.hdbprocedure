@@ -1,4 +1,4 @@
-PROCEDURE "get_All_Employees"() AS
+PROCEDURE "GET_ALL_EMPLOYEES"() AS
 BEGIN 
 SELECT "id","first_name","gender","mobile" FROM "employee";
 END
