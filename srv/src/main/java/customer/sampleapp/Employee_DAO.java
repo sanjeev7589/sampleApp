@@ -22,7 +22,7 @@ public class Employee_DAO {
  List<Employee> results = new ArrayList<Employee>();
             if (entityManager != null) {
                   StoredProcedureQuery spEmployees = entityManager
-                    .createStoredProcedureQuery("get_All_Employees", "employee_mapping");
+                    .createStoredProcedureQuery("GET_ALL_EMPLOYEES", "employee_mapping");
             spEmployees.execute();
             @SuppressWarnings("unchecked")
             List<Employee> tempResults = spEmployees.getResultList();
