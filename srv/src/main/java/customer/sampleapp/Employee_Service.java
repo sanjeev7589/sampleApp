@@ -14,10 +14,10 @@ public class Employee_Service {
     public Collection<Employee> getAllEmployees(){
         return EmployeeDAO.getAllEmployees();
     }
-    //  @Autowired
-    // private Employeejpadao employeejpadao;
-    // public Collection<Employeejpa> getAllEmployeesjpa(){
-    //     return employeejpadao.findAll();
-    // }
+     @Autowired
+    private Employeejpadao employeejpadao;
+    public Collection<Employeejpa> getAllEmployeesjpa(){
+        return employeejpadao.findAll();
+    }
    
 }
