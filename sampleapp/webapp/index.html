@@ -12,24 +12,23 @@
     </style>
     <script
         id="sap-ui-bootstrap"
-        src="resources/sap-ui-core.js"
+        src="https://ui5.sap.com/resources/sap-ui-core.js"
         data-sap-ui-theme="sap_horizon"
         data-sap-ui-resourceroots='{
             "com.sampleapp": "./"
         }'
-        data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
         data-sap-ui-compatVersion="edge"
         data-sap-ui-async="true"
         data-sap-ui-frameOptions="trusted"
     ></script>
+    <script>
+        	sap.ui.getCore().attachInit(function () {
+			new sap.ui.core.ComponentContainer({
+				name : "com.sampleapp"
+			}).placeAt("content");
+		});
+</script> 
 </head>
 <body class="sapUiBody sapUiSizeCompact" id="content">
-    <div
-        data-sap-ui-component
-        data-name="com.sampleapp"
-        data-id="container"
-        data-settings='{"id" : "com.sampleapp"}'
-        data-handle-validation="true"
-    ></div>
 </body>
 </html>
