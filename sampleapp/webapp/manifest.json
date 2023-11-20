@@ -77,13 +77,7 @@
         "clearControlAggregation": false
       },
       "routes": [
-        {
-          "name": "RouteView",
-          "pattern": ":?query:",
-          "target": [
-            "TargetView"
-          ]
-        },
+     
         {
           "name": "login",
           "pattern": "",

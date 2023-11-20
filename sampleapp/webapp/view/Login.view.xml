@@ -27,13 +27,13 @@
                                             <form:SimpleForm id="loginForm" class="sapUiSizeCozy" editable="false" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
                                                 <form:content>
                                                     <Label labelFor="inpEmail" text="Username" />
-                                                    <Input id="inpEmail" type="Email" class="sapUiSizeCozy" value="{path : 'loginModel>/email', type : 'sap.ui.model.type.String', constraints: {search: '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$'}}" field:type="Input" enabled="{loginModel>/enable}"/>
+                                                    <Input id="inpEmail" type="Email" class="sapUiSizeCozy" value="{path : 'loginModel>/email', type : 'sap.ui.model.type.String', constraints: {search: '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$'}}" field:type="Input" valueState ="{loginModel>/emailValueState}" valueStateText ="{loginModel>/emailValueStateText}"  />
                                                     <Label labelFor="inpPassword" text="Password" />
-                                                    <Input type="Password" id="inpPassword" value="{path : 'loginModel>/password', type : 'sap.ui.model.type.String'}" class="sapUiSizeCozy" field:type="Input" enabled="{loginModel>/enable}"/>
+                                                    <Input type="Password" id="inpPassword" value="{path : 'loginModel>/password', type : 'sap.ui.model.type.String'}" class="sapUiSizeCozy" field:type="Input" valueState ="{loginModel>/passValueState}" valueStateText ="{loginModel>/passValueStateText}" />
                                                     <HBox justifyContent="End">
                                                         <Link text="Forgot Password?" press="onPressChangePassword"/>
                                                     </HBox>
-                                                    <Label text="Company" required="false" />
+                                                    <!-- <Label text="Company" required="false" />
                                                     <ComboBox placeholder="Select the company" enabled="{loginModel>/enable}">
                                                         <core:Item key="1" text="Company A" />
                                                         <core:Item key="2" text="Company B" />
@@ -41,7 +41,7 @@
                                                     </ComboBox>
                                                     <Label text="Token" required="false" />
                                                     <Input value="" enabled="{= !${loginModel>/enable}}"/>
-                                                    <Label />
+                                                    <Label /> -->
                                                     <Button id="loginBtn" text="Login" type="Emphasized" class="sapUiSizeCozy" width="100%" press="onPressLogin"/>
                                                 </form:content>
                                             </form:SimpleForm>
@@ -55,10 +55,10 @@
                 </VBox>
             </VBox>
         </content>
-        <footer>
+        <!-- <footer>
             <OverflowToolbar>
                 <Button id="messagePopoverBtnLogin" visible="{=!!${errors>/}.length}" icon="sap-icon://error" type="Negative" text="Error" press=".handleMessagePopoverPress" ariaHasPopup="Dialog" />
             </OverflowToolbar>
-        </footer>
+        </footer> -->
     </Page>
 </mvc:View>
