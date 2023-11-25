@@ -1,5 +1,5 @@
-PROCEDURE "Employee_fetch_id"(
-    IN p_EMP_NO BIGINT
+PROCEDURE "EMPLOYEE_FETCH_ID"(
+    IN p_EMP_NO BIGINT   
 )
 AS
 BEGIN
