@@ -66,7 +66,7 @@
 			<version>4.0.1</version>
 			<scope>provided</scope>
 		</dependency>
-			<dependency>
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
@@ -96,7 +96,11 @@
 			<artifactId>odata-client-core</artifactId>
 			<version>4.9.0</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20190722</version>
+		</dependency>
 		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
