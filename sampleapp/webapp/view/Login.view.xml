@@ -21,8 +21,8 @@
                                     <VBox class="sapUiTinyMargin" justifyContent="Center" alignItems="Center" width="80%">
                                         <items>
                                             <HBox alignItems="Center" class="sapUiSmallMarginBottom">
-                                                <Image src="./images/lighthouse.png" height="40px" />
-                                                <Title class="sapUiTinyMarginBegin" wrapping="true" titleStyle="H2" text="Lighthouse" />
+                                                <Image height="40px" />
+                                                <Title class="sapUiTinyMarginBegin" wrapping="true" titleStyle="H2" text="For Sample" />
                                             </HBox>
                                             <form:SimpleForm id="loginForm" class="sapUiSizeCozy" editable="false" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
                                                 <form:content>

@@ -1,0 +1,99 @@
+<mvc:View controllerName="com.sampleapp.controller.Employee"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:uxap="sap.uxap"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:v="sap.ui.comp.variants"
+    xmlns:tnt="sap.tnt"
+    xmlns:table="sap.ui.table"
+    xmlns:smartForm="sap.ui.comp.smartform"
+    xmlns:smartField="sap.ui.comp.smartfield"
+    xmlns:card="sap.f.cards"
+    xmlns:u="sap.ui.unified"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:l="sap.ui.layout"
+    xmlns:m="sap.m">
+    <f:DynamicPage id="page_MngEmployees">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title id="titleId" text="Employees"/>
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                <fb:FilterBar id="fb_Employees" persistencyKey="myPersKey" useToolbar="false" search="advancedFilter" showClearOnFB="true" clear="clearAllFilters" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+                    <fb:filterItems>
+                        <fb:FilterItem name="A" label="Name">
+                            <fb:control>
+                                <Input placeholder="" value=""/>
+                            </fb:control>
+                        </fb:FilterItem>
+                        <fb:FilterItem name="B" label="Gender">
+                            <fb:control>
+                                <Input placeholder="" value=""/>
+                            </fb:control>
+                        </fb:FilterItem>
+                        <fb:FilterItem name="C" label="Mobile">
+                            <fb:control>
+                                <Input placeholder="" value=""/>
+                            </fb:control>
+                        </fb:FilterItem>
+                    </fb:filterItems>
+                </fb:FilterBar>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <Table id="tableEmployees" items = "{employeeListMdl>/}" mode="None" sticky="ColumnHeaders,HeaderToolbar" inset="false" class="sapUiSmallMarginTop" selectionChange="onPressSelectRow">
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <content>
+                            <Label design="Bold" />
+                            <ToolbarSpacer />
+                            <!-- <Button id="btnEditPayments" type="Ghost" text="{i18n>organization_btnPayments}" press="onPressEditEmployeePayment" enabled="false" width="125px"/>
+                                <Button id="btnTimes" type="Ghost" text="{i18n>organization_btnViewTimes}" press="onPressTimes" enabled="false" width="100px"/>
+                                <ToolbarSeparator id="seperatorIdOne"/> -->
+                            <!-- <Button id="btnSynchronize" icon="sap-icon://synchronize" type="Transparent" press="onPressSync" tooltip="Cloud Synchronize"/>
+                                <ToolbarSeparator id="seperatorIdTwo"/> -->
+                            <Button icon="sap-icon://download" press="onPressExport" tooltip="Download Excel"/>
+                            <ToolbarSeparator />
+                            <OverflowToolbarButton type="Transparent" tooltip="Sort" icon="sap-icon://sort" press="handleSortButtonPressed"/>
+                            <OverflowToolbarButton type="Transparent" tooltip="Group" icon="sap-icon://group-2" press="handleGroupButtonPressed"/>
+                            <OverflowToolbarButton type="Transparent" icon="sap-icon://settings" tooltip="Settings" press="handlePersoButtonPressed" />
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column hAlign="Begin">
+                        <Text text="Name" />
+                    </Column>
+                    <Column hAlign="Begin" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+                        <Text text="Gender" />
+                    </Column>
+                    <Column hAlign="Begin" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+                        <Text text="Mobile" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem type="Navigation" press="onPressEmployeeList">
+                        <cells>
+                            <Text text="{employeeListMdl>first_name}" wrapping="false" />
+                            <Text text="{employeeListMdl>gender}"/>
+                            <Text text="{employeeListMdl>mobile}" wrapping="false" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </f:content>
+        <f:footer>
+            <Toolbar>
+                <Button id="btn_MngEmployeeError" icon="sap-icon://error" type="Negative" text="Error" press=".handleMessagePopoverPress" ariaHasPopup="Dialog" />
+            </Toolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View  >

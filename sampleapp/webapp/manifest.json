@@ -68,7 +68,7 @@
     },
     "routing": {
       "config": {
-        "routerClass": "sap.m.routing.Router",
+        "routerClass": "sap.f.routing.Router",
         "viewType": "XML",
         "async": true,
         "viewPath": "com.sampleapp.view",
@@ -77,16 +77,39 @@
         "clearControlAggregation": false
       },
       "routes": [
-     
         {
           "name": "login",
           "pattern": "",
           "target": [
             "Login"
           ]
+        },
+        {
+          "name": "dashboard",
+          "pattern": "dashboard",
+          "target": [
+            "Dashboard"
+          ]
+        },
+        {
+          "name": "employee",
+          "pattern": "employee",
+          "target": [
+            "Employee"
+          ]
+        },
+        {
+          "name": "employee-details",
+          "pattern": "employee-details/{layout}/{ID}",
+          "target": [
+            "EmployeeDetails"
+          ]
         }
       ],
       "targets": {
+        "AppUnified": {
+          "viewName": "AppUnified"
+        },
         "TargetView": {
           "viewType": "XML",
           "transition": "slide",
@@ -99,6 +122,30 @@
           "transition": "slide",
           "viewId": "Login",
           "viewName": "Login"
+        },
+        "Dashboard": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "Dashboard",
+          "viewName": "Dashboard"
+        },
+        "Employee": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "Employee",
+          "viewName": "Employee",
+          "parent": "AppUnified",
+          "controlId": "fcl",
+          "controlAggregation": "beginColumnPages"
+        },
+        "EmployeeDetails": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "EmployeeDetails",
+          "viewName": "EmployeeDetails",
+          "parent": "AppUnified",
+          "controlId": "fcl",
+          "controlAggregation": "beginColumnPages"
         }
       }
     },
@@ -106,7 +153,7 @@
       "viewName": "com.sampleapp.view.App",
       "type": "XML",
       "async": true,
-      "id": "App"
+      "id": "app"
     }
   }
 }

@@ -1,0 +1,63 @@
+<mvc:View controllerName="com.sampleapp.controller.EmployeeDetails"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:uxap="sap.uxap"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:v="sap.ui.comp.variants"
+    xmlns:tnt="sap.tnt"
+    xmlns:table="sap.ui.table"
+    xmlns:smartForm="sap.ui.comp.smartform"
+    xmlns:smartField="sap.ui.comp.smartfield"
+    xmlns:card="sap.f.cards"
+    xmlns:u="sap.ui.unified"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:l="sap.ui.layout"
+    xmlns:m="sap.m">
+    <f:DynamicPage id="page_AddEditLeaveCalendarYear" headerExpanded="false" showFooter ="{=!!${errors>/}.length}" fitContent="true">
+        <!-- DynamicPage Title -->
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="{= ${leaveCaledarYearMdl>/id} !== undefined ? 'Leave Calendar Year : '+${leaveCaledarYearMdl>/id} : 'New leave Calendar Year'}"/>
+                </f:heading>
+                <f:actions>
+                    <Button id="btnSave" type="Emphasized" text="{i18n>lcy_btnSave}" press="onPressSave" class="sapUiTinyMarginBegin" />
+                    <Button id="btnSaveClose" type="Transparent" text="{i18n>lcy_btnSaveandClose}" press="onPressSaveAndClose" />
+                    <Button id="btnClose" type="Transparent" text="{i18n>lcy_btnClose}" class="sapUiTinyMarginBegin" press="handleClose" />
+                </f:actions>
+                <f:navigationActions>
+                    <OverflowToolbarButton type="Transparent" icon="sap-icon://full-screen" press="handleFullScreen" id="enterFullScreenBtn" tooltip="Enter Full Screen Mode" visible="{= ${/actionButtonsInfo/midColumn/fullScreen} !== null }"/>
+                    <OverflowToolbarButton type="Transparent" icon="sap-icon://exit-full-screen" press="handleExitFullScreen" id="exitFullScreenBtn" tooltip="Exit Full Screen Mode" visible="{parts:['/actionButtonsInfo/midColumn/exitFullScreen' , 'leaveCaledarYearMdl>/item'], formatter:'.formatter.showHideFullScreen'}"/>
+                    <OverflowToolbarButton type="Transparent" icon="sap-icon://decline" press="handleClose" tooltip="Close end column" visible="{= ${/actionButtonsInfo/midColumn/closeColumn} !== null }"/>
+                </f:navigationActions>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:content>
+            <!-- <Panel backgroundDesign="Transparent"> -->
+            <!-- <content> -->
+                <!-- Body of Job details -->
+                <form:SimpleForm id="lcy_form" editable="true" layout="ColumnLayout">
+                    <form:content>
+                        <Label visible="true" required="true" text="{i18n>lcy_calendarName}"/>
+                        <Input value="{path:'leaveCaledarYearMdl>/name'}" placeholder="{i18n>lcy_enterCalendarName}" editable="true" field:type="Input" field:validate="required" change="onSelectCalendarname" />
+                        <Label text="{i18n>lcy_status}" required="true"/>
+                        <Select visible="true" enabled="true" items="{masterDataMdl>/status}" selectedKey="{leaveCaledarYearMdl>/status}" field:type="Select" field:validate="required">
+                            <core:Item key="{masterDataMdl>value}" text="{masterDataMdl>description}" />
+                        </Select>
+                        <Label id="lbsDate" text="{i18n>lcy_startMonthDate}" required="true"/>
+                        <DatePicker editable="{=${leaveCaledarYearMdl>/id}!==undefined?false:true}" placeholder="Enter Date" valueFormat="dd-MMM-yyyy" displayFormat="MMMM / dd" change="onSelectMonthDateChange" value="{path:'leaveCaledarYearMdl>/start_month_date'}" field:type="DatePicker" field:validate="required" />
+                        <Label text="{i18n>lcy_endMonthDate}" required="true"/>
+                        <DatePicker id = "endMonthDateId" editable="false" placeholder="Enter Date" valueFormat="dd-MMM-yyyy" displayFormat="MMMM / dd" change="onSelectMonthDateChange" value="{path: 'leaveCaledarYearMdl>/end_month_date'}"/>
+
+                    </form:content>
+                </form:SimpleForm>
+            <!-- </content> -->
+        </f:content>
+    </f:DynamicPage>
+
+</mvc:View>

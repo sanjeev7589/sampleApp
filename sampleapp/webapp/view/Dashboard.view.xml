@@ -1,0 +1,287 @@
+<mvc:View controllerName="com.sampleapp.controller.Dashboard"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:l="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:vm="sap.ui.comp.variants"
+    xmlns:w="sap.ui.integration.widgets"
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+    xmlns:micro="sap.suite.ui.microchart"
+    xmlns:u="sap.uxap"
+    xmlns:tnt="sap.tnt"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+    <Page showHeader="true" enableScrolling="false" titleAlignment="Center" showFooter="false">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Image src="./images/logo1.jpg" height="35px" />
+                </contentLeft>
+                <contentMiddle>
+                    <!--   <Title text="{/genericTitle}"/> -->
+                </contentMiddle>
+                <contentRight>
+                    <Button icon="sap-icon://hint" type="Transparent" />
+                    <Button icon="sap-icon://bell" type="Transparent" />
+                    <Avatar initials="S" displaySize="XS" press=".menuPopoverOpen" />
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <!-- * The tile values indicate active records. -->
+            <tnt:ToolPage id="toolPage">
+                <tnt:mainContents>
+                    <u:ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false" showHeaderContent="false">
+
+                        <u:sections>
+                            <u:ObjectPageSection titleUppercase="false" title="Main Contents">
+                                <u:subSections>
+                                    <u:ObjectPageSubSection titleUppercase="false">
+                                        <f:GridContainer columnsChange=".onGridColumnsChange">
+                                            <f:layout>
+                                                <f:GridContainerSettings rowSize="55px" columnSize="84px" gap="12px" />
+                                            </f:layout>
+                                            <f:layoutXS>
+                                                <f:GridContainerSettings rowSize="45px" columnSize="70px" gap="12px" />
+                                            </f:layoutXS>
+
+                                            <GenericTile sizeBehavior="Responsive"  subheader="Employee" press="onPressTile" app:route="employee" app:key="1">
+                                                <layoutData>
+                                                    <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                                                </layoutData>
+                                                <TileContent >
+                                                    <ImageContent src="sap-icon://bbyd-dashboard" class="sapUiTinyMarginBegin"/>
+                                                </TileContent>
+                                            </GenericTile>
+                                            <!-- <GenericTile header="Voyages" subheader="Vessel Travel Log" press="onPressTile" app:route="voyagesMaster" app:key="1">
+                                                <layoutData>
+                                                    <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                                                </layoutData>
+                                                <TileContent footer="Active Voyages">
+                                                    <NumericContent class="voyages" value="29" icon="sap-icon://BusinessSuiteInAppSymbols/icon-vessel" withMargin="false" />
+                                                </TileContent>
+                                            </GenericTile>
+                                            <GenericTile sizeBehavior="Responsive" header="Imports" subheader="Import Records" wrappingType="Hyphenated" press="onPressTile" app:route="manageImports" app:key="1">
+                                                <layoutData>
+                                                    <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                                                </layoutData>
+                                                <TileContent footer="Active Import Records">
+                                                    <NumericContent value="17" icon="sap-icon://BusinessSuiteInAppSymbols/icon-target" withMargin="false" />
+                                                </TileContent>
+                                            </GenericTile>
+                                            <GenericTile sizeBehavior="Responsive" header="Exports" subheader="Export Records" press="onPressTile" app:key="1">
+                                                <layoutData>
+                                                    <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                                                </layoutData>
+                                                <TileContent footer="Active Export Records">
+                                                    <NumericContent value="12" icon="sap-icon://BusinessSuiteInAppSymbols/icon-source" withMargin="false" />
+                                                </TileContent>
+                                            </GenericTile>
+                                            <GenericTile sizeBehavior="Responsive" header="Trans-shipment" subheader="Container Transfers" press="onPressTile" app:key="1">
+                                                <layoutData>
+                                                    <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                                                </layoutData>
+                                                <TileContent footer="Active Transshipments">
+                                                    <NumericContent value="08" icon="sap-icon://BusinessSuiteInAppSymbols/icon-data-access" withMargin="false" />
+                                                </TileContent>
+                                            </GenericTile>
+                                            <GenericTile sizeBehavior="Responsive" header="Operations" subheader="Shipping Operations" press="onPressTile" app:key="1">
+                                                <layoutData>
+                                                    <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                                                </layoutData>
+                                                <TileContent footer="Active Voyages">
+                                                    <NumericContent value="29" icon="sap-icon://enablement" withMargin="false" />
+                                                </TileContent>
+                                            </GenericTile>
+                                            <GenericTile sizeBehavior="Responsive" header="Reports" subheader="Liner Service Reports" press="onPressTile" app:key="1">
+                                                <layoutData>
+                                                    <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                                                </layoutData>
+                                                <TileContent footer="Metrics &amp; Insights">
+                                                    <ImageContent src="sap-icon://manager-insight" class="sapUiTinyMarginBegin"/>
+                                                </TileContent>
+                                            </GenericTile> -->
+                                        </f:GridContainer>
+                                    </u:ObjectPageSubSection>
+                                </u:subSections>
+                            </u:ObjectPageSection>
+                            <!-- <u:ObjectPageSection titleUppercase="false" title="C&#38;F Services">
+                                <u:subSections>
+                                    <u:ObjectPageSubSection titleUppercase="false">
+
+                                        <f:GridContainer columnsChange=".onGridColumnsChange">
+                                            <f:layout>
+                                                <f:GridContainerSettings rowSize="55px" columnSize="84px" gap="12px" />
+                                            </f:layout>
+                                            <f:layoutXS>
+                                                <f:GridContainerSettings rowSize="45px" columnSize="70px" gap="12px" />
+                                            </f:layoutXS>
+
+                                            <GenericTile sizeBehavior="Responsive" header="Dashboard" press="onPressTile" subheader="C&amp;F Services" app:route="mockScreenMaster" app:key="2">
+                                                <layoutData>
+                                                    <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                                                </layoutData>
+                                                <TileContent footer="Operational Overview">
+                                                    <ImageContent src="sap-icon://bbyd-dashboard" class="sapUiTinyMarginBegin"/>
+                                                </TileContent>
+                                            </GenericTile                                            >
+
+                                            <GenericTile sizeBehavior="Responsive" header="Jobs" subheader="Service Requests" press="onPressTile" app:key="2">
+                                                <layoutData>
+                                                    <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                                                </layoutData>
+                                                <TileContent footer="Active Job Requests">
+                                                    <NumericContent value="13" icon="sap-icon://request" withMargin="false" />
+                                                </TileContent>
+                                            </GenericTile>
+
+                                            <GenericTile sizeBehavior="Responsive" header="Payments" subheader="C&amp;F Service Payments" press="onPressTile" app:key="2">
+                                                <layoutData>
+                                                    <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                                                </layoutData>
+                                                <TileContent footer="Pending Payments">
+                                                    <NumericContent value="06" icon="sap-icon://money-bills" withMargin="false" />
+                                                </TileContent>
+                                            </GenericTile>
+
+                                            <GenericTile sizeBehavior="Responsive" header="Reports" subheader="C&amp;F Service Reports" press="onPressTile" app:key="2">
+                                                <layoutData>
+                                                    <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                                                </layoutData>
+                                                <TileContent footer="Metrics &amp; Insights">
+                                                    <ImageContent src="sap-icon://manager-insight" class="sapUiTinyMarginBegin"/>
+                                                </TileContent>
+                                            </GenericTile>
+                                        </f:GridContainer>
+                                    </u:ObjectPageSubSection>
+                                </u:subSections>
+                            </u:ObjectPageSection>
+                            <u:ObjectPageSection titleUppercase="false" title="Other Services">
+                                <u:subSections>
+                                    <u:ObjectPageSubSection titleUppercase="false">
+
+                                        <f:GridContainer columnsChange=".onGridColumnsChange">
+                                            <f:layout>
+                                                <f:GridContainerSettings rowSize="55px" columnSize="84px" gap="12px" />
+                                            </f:layout>
+                                            <f:layoutXS>
+                                                <f:GridContainerSettings rowSize="45px" columnSize="70px" gap="12px" />
+                                            </f:layoutXS>
+
+                                            <GenericTile sizeBehavior="Responsive" header="Dashboard" subheader="Other Services" press="onPressTile" app:route="mockScreenMaster" app:key="3">
+                                                <layoutData>
+                                                    <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                                                </layoutData>
+                                                <TileContent footer="Operational Overview">
+                                                    <ImageContent src="sap-icon://bbyd-dashboard" class="sapUiTinyMarginBegin"/>
+                                                </TileContent>
+                                            </GenericTile>
+
+                                            <GenericTile sizeBehavior="Responsive" header="Husbandry Services" subheader="Support Services" press="onPressTile" app:key="3">
+                                                <layoutData>
+                                                    <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                                                </layoutData>
+                                                <TileContent footer="Active Requests">
+                                                    <NumericContent value="02" icon="sap-icon://technical-object" withMargin="false" />
+                                                </TileContent>
+                                            </GenericTile>
+
+                                            <GenericTile sizeBehavior="Responsive" header="Transportation" subheader="Transport Requests" press="onPressTile" app:key="3">
+                                                <layoutData>
+                                                    <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                                                </layoutData>
+                                                <TileContent footer="Pending Requests">
+                                                    <NumericContent value="15" icon="sap-icon://shipping-status" withMargin="false" />
+                                                </TileContent>
+                                            </GenericTile>
+
+                                            <GenericTile sizeBehavior="Responsive" header="Reports" subheader="Other Service Reports" press="onPressTile" app:key="3">
+                                                <layoutData>
+                                                    <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                                                </layoutData>
+                                                <TileContent footer="Metrics &amp; Insights">
+                                                    <ImageContent src="sap-icon://manager-insight" class="sapUiTinyMarginBegin"/>
+                                                </TileContent>
+                                            </GenericTile>
+                                        </f:GridContainer>
+                                    </u:ObjectPageSubSection>
+                                </u:subSections>
+                            </u:ObjectPageSection>
+                            <u:ObjectPageSection titleUppercase="false" title="Finance">
+                                <u:subSections>
+                                    <u:ObjectPageSubSection titleUppercase="false">
+
+                                        <f:GridContainer columnsChange=".onGridColumnsChange">
+                                            <f:layout>
+                                                <f:GridContainerSettings rowSize="55px" columnSize="84px" gap="12px" />
+                                            </f:layout>
+                                            <f:layoutXS>
+                                                <f:GridContainerSettings rowSize="45px" columnSize="70px" gap="12px" />
+                                            </f:layoutXS>
+
+                                            <GenericTile sizeBehavior="Responsive" header="Reports" subheader="Finance Reports" app:route="mockScreenMaster" press="onPressTile" app:key="4">
+                                                <layoutData>
+                                                    <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                                                </layoutData>
+                                                <TileContent footer="Metrics &amp; Insights">
+                                                    <ImageContent src="sap-icon://customer-financial-fact-sheet" class="sapUiTinyMarginBegin"/>
+                                                </TileContent>
+                                            </GenericTile>
+                                        </f:GridContainer>
+                                    </u:ObjectPageSubSection>
+                                </u:subSections>
+                            </u:ObjectPageSection>
+                            <u:ObjectPageSection titleUppercase="false" title="Admin">
+                                <u:subSections>
+                                    <u:ObjectPageSubSection titleUppercase="false">
+
+                                        <f:GridContainer columnsChange=".onGridColumnsChange">
+                                            <f:layout>
+                                                <f:GridContainerSettings rowSize="55px" columnSize="84px" gap="12px" />
+                                            </f:layout>
+                                            <f:layoutXS>
+                                                <f:GridContainerSettings rowSize="45px" columnSize="70px" gap="12px" />
+                                            </f:layoutXS>
+
+                                            <GenericTile sizeBehavior="Responsive" header="Application Config" subheader="Application Settings" app:route="shippingLineMaster" press="onPressTile" app:key="5">
+                                                <layoutData>
+                                                    <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                                                </layoutData>
+                                                <TileContent footer="Setup &amp; Integration">
+                                                    <ImageContent src="sap-icon://action-settings" class="sapUiTinyMarginBegin"/>
+                                                </TileContent>
+                                            </GenericTile>
+
+                                            <GenericTile sizeBehavior="Responsive" header="Manage Users" subheader="User &amp; Access Mgmt" app:route="shippingLineMaster" press="onPressTile" app:key="5">
+                                                <layoutData>
+                                                    <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                                                </layoutData>
+                                                <TileContent footer="Users, Roles &amp; Auth">
+                                                    <ImageContent src="sap-icon://user-settings" class="sapUiTinyMarginBegin"/>
+                                                </TileContent>
+                                            </GenericTile>
+
+                                            <GenericTile sizeBehavior="Responsive" header="Master Data" subheader="Setup Master Data" app:route="shippingLineMaster" press="onPressTile" app:key="5">
+                                                <layoutData>
+                                                    <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                                                </layoutData>
+                                                <TileContent footer="App Master Data">
+                                                    <ImageContent src="sap-icon://course-program" class="sapUiTinyMarginBegin"/>
+                                                </TileContent>
+                                            </GenericTile>
+                                        </f:GridContainer>
+                                    </u:ObjectPageSubSection>
+                                </u:subSections>
+                            </u:ObjectPageSection> -->
+
+                        </u:sections>
+                    </u:ObjectPageLayout>
+                </tnt:mainContents>
+            </tnt:ToolPage>
+        </content>
+    </Page>
+
+</mvc:View>
