@@ -14,6 +14,7 @@ sap.ui.define([
 		onInit: function () {
 			that = this;
 			this.oOwnerComponent = this.getOwnerComponent();
+			var getId = this.getView();
 			this.oRouter = this.oOwnerComponent.getRouter();
 			this.oModel = this.oOwnerComponent.getModel();
 			this.oRouter.getRoute("employee").attachMatched(this._onRouteMatched, this);
