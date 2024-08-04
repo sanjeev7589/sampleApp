@@ -7,9 +7,11 @@ sap.ui.define([
     'sap/ui/core/library',
     'sap/ui/core/Core',
     'sap/ui/core/Element',
-    'sap/m/MessageToast'
+    'sap/m/MessageToast',
+    "com/sampleapp/utils/URLConstants"
+
     // 'com/app/customerportal/controller/Constant',
-], function (BaseController, JSONModel, MessagePopover, MessageItem, Message, coreLibrary, Core, Element, MessageToast, ErrorMessage) {
+], function (BaseController, JSONModel, MessagePopover, MessageItem, Message, coreLibrary, Core, Element, MessageToast, ErrorMessage,URLConstants) {
     "use strict";
     // var timerId, that;
     // // shortcut for sap.ui.core.MessageType
@@ -35,12 +37,36 @@ sap.ui.define([
             this.oView.setModel(oModel, "loginModel");
         },
         _onObjectMatched: function () {
-            // this.onPressChangePassword();
-            //Default theme
-            // sap.ui.getCore().applyTheme("sap_horizon");
-            // //value state removing if existing state is thare means
-            // this.eMdl = this.getOwnerComponent().getModel('errors');
-            // ErrorMessage.removeValueState(this.formId, this.eMdl);
+            this.fetchEmployees();
+        },
+        setModel: function () {
+            let data = {
+                route: this._route,
+                item: this._item,
+                general: {
+                    cardCode: null,
+                    cardName: null,
+                    "Series": 76,
+                    industry: 1,
+                    cardType: "cSupplier",
+                    valid: "tYES",
+                    debitorAccount: "201001",
+                    city: null,
+                    status: 2,
+                },
+            }
+            this.getView().setModel(new JSONModel(data));
+        },
+        fetchEmployees:async function(){
+            try {
+                this.showLoading();
+                let path =  URLConstants.URL.port_code_add;
+                let portCode = await this.restMethodPost(path);
+                this.getView()
+
+            } catch (error) {
+                this.errorHandling();
+            }
         },
         onAfterRendering: function () {
             var view = this.getView();

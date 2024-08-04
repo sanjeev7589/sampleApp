@@ -1,13 +1,15 @@
 sap.ui.define([
 	"com/sampleapp/controller/BaseController",
-	"sap/ui/model/json/JSONModel", "sap/ui/core/Fragment",
+	"sap/ui/model/json/JSONModel", 
+	"sap/ui/core/Fragment",
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
 	"sap/m/MessageBox", 'sap/ui/export/Spreadsheet',
 	"sap/m/Dialog",
-	"sap/ui/model/Sorter"
+	"sap/ui/model/Sorter",
+	 "com/sampleapp/utils/URLConstants"
 
-], function (BaseController, JSONModel, Fragment, Filter, FilterOperator, MessageBox, Spreadsheet, Dialog, Sorter) {
+], function (BaseController, JSONModel, Fragment, Filter, FilterOperator, MessageBox, Spreadsheet, Dialog, Sorter,URLConstants) {
 	"use strict";
 	var that = this;
 	return BaseController.extend("com.sampleapp.controller.Employee", {
@@ -19,57 +21,33 @@ sap.ui.define([
 			this.oModel = this.oOwnerComponent.getModel();
 			this.oRouter.getRoute("employee").attachMatched(this._onRouteMatched, this);
 			this._tableId = this.getView().byId("tableEmployees");
+			this.pageId = this.getView().byId("page_MngEmployees");
+			this.popoverBtn  = this.getView().byId("btn_MngEmployeeError");
 		},
 		_onRouteMatched: function (oEvent) {
 			that = this;
-			this.getView().setModel(new JSONModel(), "employeeListMdl");
-			this.mockData();
+			this.setModel();
 			this.fetchEmployee();
 		},
-		mockData: function () {
-			let data = [{
-				first_name: "name1",
-				gender: "Male",
-				mobile: "9087576587"
-			},
-			{
-				first_name: "name2",
-				gender: "Male",
-				mobile: "9087576587"
-			},
-			{
-				first_name: "name3",
-				gender: "Male",
-				mobile: "9087576587"
-			},
-			{
-				first_name: "name4",
-				gender: "Male",
-				mobile: "9087576587"
-			},
-			{
-				first_name: "name5",
-				gender: "Male",
-				mobile: "9087576587"
-			},
-			{
-				first_name: "name6",
-				gender: "Male",
-				mobile: "9087576587"
-			},
-			{
-				first_name: "name7",
-				gender: "Male",
-				mobile: "9087576587"
-			}]
-			this.getView().setModel(new JSONModel(data), "employeeListMdl");
+		emptyModelData: function () {
+			return {
+				advancedFilter: {
+	
+				 }
+			}
 		},
+		setModel: function () {
+			let data = this.emptyModelData();
+			this.getView().setModel(new JSONModel(data));
+		 },
 		fetchEmployee: async function () {
 			try {
+				let oModel = this.getView().getModel();
 				this.showLoading(true);
-				let path = 'Employees/all';
-				let res = await this.restMethodGet(path);
-				this.getView().setModel(new JSONModel(res), "employeeListMdl");
+				let path = URLConstants.URL.employees_all;
+				let employees = await this.restMethodGet(path);
+				oModel.getData().table.items = employees;
+				oModel.refresh();
 				this.showLoading(false);
 			}
 			catch (ex) {

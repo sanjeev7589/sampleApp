@@ -22,7 +22,7 @@
                                         <items>
                                             <HBox alignItems="Center" class="sapUiSmallMarginBottom">
                                                 <Image height="40px" />
-                                                <Title class="sapUiTinyMarginBegin" wrapping="true" titleStyle="H2" text="For Sample" />
+                                                <Title class="sapUiTinyMarginBegin" wrapping="true" titleStyle="H2" text="Employee Login" />
                                             </HBox>
                                             <form:SimpleForm id="loginForm" class="sapUiSizeCozy" editable="false" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
                                                 <form:content>
