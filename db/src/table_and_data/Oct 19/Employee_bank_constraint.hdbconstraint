@@ -1,4 +1,0 @@
-CONSTRAINT employee_bank_constraint 
-ON "Employee_bank_details" FOREIGN KEY ("employee_id") 
-REFERENCES "employee"("id") ON UPDATE CASCADE 
-
