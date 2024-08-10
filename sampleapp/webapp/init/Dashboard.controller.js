@@ -9,7 +9,7 @@ sap.ui.define([
 ], function (BaseController, JSONModel, DateFormat, MessageToast, library, Core, fioriLibrary) {
     "use strict";
     var that = this;
-    return BaseController.extend("com.sampleapp.controller.Dashboard", {
+    return BaseController.extend("com.sampleapp.init.Dashboard", {
 
         onInit: function () {
             var oRouter = this.getOwnerComponent().getRouter();

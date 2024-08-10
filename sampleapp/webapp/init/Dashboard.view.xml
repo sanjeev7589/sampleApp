@@ -1,4 +1,4 @@
-<mvc:View controllerName="com.sampleapp.controller.Dashboard"
+<mvc:View controllerName="com.sampleapp.init.Dashboard"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m"
     xmlns:f="sap.f"

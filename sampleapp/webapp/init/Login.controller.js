@@ -17,7 +17,7 @@ sap.ui.define([
     // // shortcut for sap.ui.core.MessageType
     // var MessageType = coreLibrary.MessageType;
 
-    return BaseController.extend("com.sampleapp.controller.Login", {
+    return BaseController.extend("com.sampleapp.init.Login", {
         onInit: function () {
             var that = this;
             // that.getView().addStyleClass(that.getOwnerComponent().getContentDensityClass());

@@ -71,7 +71,7 @@
         "routerClass": "sap.f.routing.Router",
         "viewType": "XML",
         "async": true,
-        "viewPath": "com.sampleapp.view",
+        "viewPath": "com.sampleapp",
         "controlAggregation": "pages",
         "controlId": "app",
         "clearControlAggregation": false
@@ -121,13 +121,13 @@
           "viewType": "XML",
           "transition": "slide",
           "viewId": "Login",
-          "viewName": "Login"
+          "viewName": "init.Login"
         },
         "Dashboard": {
           "viewType": "XML",
           "transition": "slide",
           "viewId": "Dashboard",
-          "viewName": "Dashboard"
+          "viewName": "init.Dashboard"
         },
         "Employee": {
           "viewType": "XML",
