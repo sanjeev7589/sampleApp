@@ -1,4 +1,6 @@
 package customer.sampleapp.user;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,7 +29,16 @@ public class UserController {
 
     @PostMapping(value = "/add")
     public String addNewUser(@RequestBody UserInfo userInfo) {
-        return service.addUser(userInfo);
+        AuthRequest req = new AuthRequest();
+        req.setUsername(userInfo.getName());
+        req.setPassword(userInfo.getPassword());
+        service.addUser(userInfo);
+        return authenticateAndGetToken(req);
+    }
+
+    @GetMapping(value = "/get")
+    public Optional<UserInfo> getUser(@RequestBody UserInfo userInfo) {
+        return service.getUser(userInfo);
     }
 
     @GetMapping(value = "/user")

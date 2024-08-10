@@ -23,6 +23,7 @@ public class UserInfo {
     private String name;
     private String email;
     private String password;
+    private String token;
     private String roles;
     private Integer status;
 
