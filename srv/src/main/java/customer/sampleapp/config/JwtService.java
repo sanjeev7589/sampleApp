@@ -1,4 +1,4 @@
-package customer.sampleapp.user;
+package customer.sampleapp.config;
 
 
 import io.jsonwebtoken.Claims;

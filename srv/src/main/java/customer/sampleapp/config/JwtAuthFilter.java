@@ -1,5 +1,5 @@
 package customer.sampleapp.config;
-import customer.sampleapp.user.JwtService;
+import customer.sampleapp.login.LoginService;
 import customer.sampleapp.user.UserInfoService;
 // import jakarta.servlet.FilterChain;
 // import jakarta.servlet.ServletException;
@@ -27,8 +27,11 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     @Autowired
     private JwtService jwtService;
 
+/*     @Autowired
+    private UserInfoService userDetailsService; */
+
     @Autowired
-    private UserInfoService userDetailsService;
+    private LoginService loginService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -41,7 +44,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+            UserDetails userDetails = loginService.loadUserByUsername(username);
             if (jwtService.validateToken(token, userDetails)) {
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails((javax.servlet.http.HttpServletRequest) request));

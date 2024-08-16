@@ -27,9 +27,9 @@
                                             <form:SimpleForm id="loginForm" class="sapUiSizeCozy" editable="false" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
                                                 <form:content>
                                                     <Label labelFor="inpEmail" text="Username" />
-                                                    <Input id="inpEmail" type="Email" class="sapUiSizeCozy" value="{path : '/email', type : 'sap.ui.model.type.String', constraints: {search: '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$'}}" field:type="Input" valueState ="{loginModel>/emailValueState}" valueStateText ="{loginModel>/emailValueStateText}"  />
+                                                    <Input id="inpEmail" type="Email" class="sapUiSizeCozy" value="{/general/userName}" field:type="Input" valueState ="{loginModel>/emailValueState}" valueStateText ="{loginModel>/emailValueStateText}"  />
                                                     <Label labelFor="inpPassword" text="Password" />
-                                                    <Input type="Password" id="inpPassword" value="{path : '/password', type : 'sap.ui.model.type.String'}" class="sapUiSizeCozy" field:type="Input" valueState ="{loginModel>/passValueState}" valueStateText ="{loginModel>/passValueStateText}" />
+                                                    <Input type="Password" id="inpPassword" value="{/general/password}" class="sapUiSizeCozy" field:type="Input" valueState ="{loginModel>/passValueState}" valueStateText ="{loginModel>/passValueStateText}" />
                                                     <HBox justifyContent="End">
                                                         <Link text="Forgot Password?" press="onPressChangePassword"/>
                                                     </HBox>

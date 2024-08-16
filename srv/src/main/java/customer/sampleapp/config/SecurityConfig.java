@@ -16,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import customer.sampleapp.login.LoginService;
 import customer.sampleapp.user.UserInfoService;
 
 import static org.springframework.security.config.Customizer.withDefaults;
@@ -29,9 +30,14 @@ public class SecurityConfig {
     @Autowired
     private JwtAuthFilter authFilter;
 
-    @Bean
+ /*    @Bean
     public UserDetailsService userDetailsService() {
         return new UserInfoService();
+    } */
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new LoginService();
     }
 
     @Bean

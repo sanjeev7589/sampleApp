@@ -24,62 +24,21 @@ sap.ui.define([
             //that.getView().setModel(new JSONModel(), "loginMdl");
             //that.showChatBot(false);
             let oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.getRoute("login").attachMatched(this._onObjectMatched, this);
-
-            //validation related id parameters
-            // this.formId = this.getView().byId('loginForm');
-            // this.pageId = this.getView().byId('loginPage');
-            // this.popoverBtn = this.getView().byId('messagePopoverBtnLogin');
-            // //
-            // this.loginBtn = this.getView().byId("loginBtn");
-            var oModel = new JSONModel({ email: "", password: "", enable: true })
-            this.oView = this.getView();
-            this.oView.setModel(oModel, "loginModel");
+            oRouter.getRoute("login").attachMatched(this._onRouteMatched, this);  
         },
-        _onObjectMatched: function () {
-            this.fetchEmployees();
+        _onRouteMatched: function () {
+            this.setModel();
         },
         setModel: function () {
             let data = {
-                route: this._route,
-                item: this._item,
-                general: {
-                    cardCode: null,
-                    cardName: null,
-                    "Series": 76,
-                    industry: 1,
-                    cardType: "cSupplier",
-                    valid: "tYES",
-                    debitorAccount: "201001",
-                    city: null,
-                    status: 2,
-                },
+                general:{
+                    userName:null,
+                    password:null
+                }
             }
             this.getView().setModel(new JSONModel(data));
         },
-        fetchEmployees:async function(){
-            try {
-                this.showLoading();
-                let path =  URLConstants.URL.port_code_add;
-                let portCode = await this.restMethodPost(path);
-                this.getView()
-
-            } catch (error) {
-                this.errorHandling();
-            }
-        },
-        onAfterRendering: function () {
-            var view = this.getView();
-            view.addDelegate({
-                onsapenter: function () {
-                    view.getController().onPressLogin();
-                }
-            });
-        },
-
-        handleMessagePopoverPress: function (oEvent) {
-            //this.errorMessagePopover(oEvent.getSource());
-        },
+     
         onPressChangePassword: function (oEvent) {
             var cModel = this.getView().getModel('loginModel');
             cModel.getData().enable = true;
