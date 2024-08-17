@@ -39,7 +39,6 @@
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
-        "sap.f": {},
         "sap.suite.ui.generic.template": {},
         "sap.ui.comp": {},
         "sap.ui.generic.app": {},
@@ -68,7 +67,7 @@
     },
     "routing": {
       "config": {
-        "routerClass": "sap.f.routing.Router",
+        "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
         "async": true,
         "viewPath": "com.sampleapp",
@@ -108,7 +107,8 @@
       ],
       "targets": {
         "AppUnified": {
-          "viewName": "AppUnified"
+          "viewId": "AppUnified",
+          "viewName": "init.Dashboard"
         },
         "TargetView": {
           "viewType": "XML",
@@ -133,10 +133,7 @@
           "viewType": "XML",
           "transition": "slide",
           "viewId": "Employee",
-          "viewName": "Employee",
-          "parent": "AppUnified",
-          "controlId": "fcl",
-          "controlAggregation": "beginColumnPages"
+          "viewName": "view.Employee"
         },
         "EmployeeDetails": {
           "viewType": "XML",
@@ -144,8 +141,8 @@
           "viewId": "EmployeeDetails",
           "viewName": "EmployeeDetails",
           "parent": "AppUnified",
-          "controlId": "fcl",
-          "controlAggregation": "beginColumnPages"
+          "controlId": "pageContainer",
+          "controlAggregation": "pages"
         }
       }
     },

@@ -27,7 +27,7 @@ sap.ui.define([
 		_onRouteMatched: function (oEvent) {
 			that = this;
 			this.setModel();
-			this.fetchEmployee();
+			this.dummy()
 		},
 		emptyModelData: function () {
 			return {
@@ -40,13 +40,12 @@ sap.ui.define([
 			let data = this.emptyModelData();
 			this.getView().setModel(new JSONModel(data));
 		 },
-		fetchEmployee: async function () {
+		 dummy: async function () {
 			try {
 				let oModel = this.getView().getModel();
 				this.showLoading(true);
-				let path = URLConstants.URL.employees_all;
-				let employees = await this.restMethodGet(path);
-				oModel.getData().table.items = employees;
+				let path = URLConstants.URL.dummy;
+				let res = await this.restMethodGet(path);
 				oModel.refresh();
 				this.showLoading(false);
 			}

@@ -4,7 +4,7 @@ sap.ui.define(
     "com/sampleapp/utils/URLConstants",
 
   ],
-  function (Controller,URLConstants) {
+  function (Controller, URLConstants) {
     return Controller.extend(
       "com.sampleapp.controller.BaseController", {
       onInit: function () {
@@ -111,26 +111,41 @@ sap.ui.define(
       restMethodGet: function (url) {
         let that = this;
         url = URLConstants.URL.app_end_point + url;
+        let token = sessionStorage.getItem("jwtToken");
         var deferred = $.Deferred();
-          $.ajax({
-            type: "GET",
-            beforeSend: function (xhr) {
-              xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-            },
-            url: url,
-            contentType: "application/json",
-            //headers: { "my-token": token },
-            success: function (response) {
-              deferred.resolve(response);
-            },
-            error: function (xhr) {
-              deferred.reject(xhr); //.responseJSON.message);
-              if (xhr && xhr.status == "401") {
-               
-              }
-            },
-          });
-        
+        $.ajax({
+          type: "GET",
+          url: url,
+          headers: {"Authorization": "Bearer " + token},
+          contentType: "application/json",
+          success: function (response) {
+            deferred.resolve(response);
+          },
+          error: function (xhr) {
+            deferred.reject(xhr); //.responseJSON.message);
+            if (xhr && xhr.status == "401") {
+
+            }
+          },
+        });
+
+        return deferred.promise();
+      },
+      restMethodPostLogin: function (url, request) {
+        url = URLConstants.URL.app_end_point+ url;
+        var deferred = $.Deferred();
+        $.ajax({
+          type: 'POST',
+          url: url,
+          data: JSON.stringify(request),
+          contentType: "application/json",
+          success: function (response) {
+            deferred.resolve(response);
+          },
+          error: function (xhr) {
+            deferred.reject(xhr);
+          }
+        });
         return deferred.promise();
       },
     })

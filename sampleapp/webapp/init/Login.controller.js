@@ -1,17 +1,10 @@
 sap.ui.define([
     "com/sampleapp/controller/BaseController",
     "sap/ui/model/json/JSONModel",
-    'sap/m/MessagePopover',
-    'sap/m/MessageItem',
-    'sap/ui/core/message/Message',
-    'sap/ui/core/library',
-    'sap/ui/core/Core',
-    'sap/ui/core/Element',
-    'sap/m/MessageToast',
     "com/sampleapp/utils/URLConstants"
 
     // 'com/app/customerportal/controller/Constant',
-], function (BaseController, JSONModel, MessagePopover, MessageItem, Message, coreLibrary, Core, Element, MessageToast, ErrorMessage,URLConstants) {
+], function (BaseController, JSONModel, URLConstants) {
     "use strict";
     // var timerId, that;
     // // shortcut for sap.ui.core.MessageType
@@ -32,7 +25,7 @@ sap.ui.define([
         setModel: function () {
             let data = {
                 general:{
-                    userName:null,
+                    name:null,
                     password:null
                 }
             }
@@ -45,27 +38,17 @@ sap.ui.define([
             cModel.refresh();
             this.loginBtn.setText("Login")
         },
-        onPressLogin: function (oEvent) {
+        onPressLogin:async function (oEvent) {
             var that = this;
-            var cModel = this.getView().getModel('loginModel');
-            var enableProp = cModel.getData().enable;
-            var emailvalidate = cModel.getData().email;
-            var mailregex = /^\w+[\w-+\.]*\@\w+([-\.]\w+)*\.[a-zA-Z]{2,}$/;
-            !emailvalidate.match(mailregex) ? (cModel.getData().emailValueState = "Error", cModel.getData().emailValueStateText = "Invalid Email") : cModel.getData().emailValueState = "None";
-            var passvalidate = cModel.getData().password;
-            !passvalidate.match(mailregex) ? (cModel.getData().passValueState = "Error", cModel.getData().passValueStateText = "Invalid Email") : cModel.getData().passValueState = "None";
-            cModel.refresh();
-            if (enableProp == true) {
-                cModel.getData().enable = false;
-                cModel.refresh();
-                // this.loginBtn.setText("Verify Token")
-                MessageToast.show("Please Enter correct UserName and Password");
-            } else {
-                this.getRouter().navTo("dashboard");
-            }
-            // } else {
-            //     //this.errorMessagePopover(this.popoverBtn);
-            // }
+            let oModel = this.getView().getModel();
+            let oData = oModel.getData();
+            this.showLoading(true);
+            let path = URLConstants.URL.login_get;
+            let getToken = await this.restMethodPostLogin(path,oData.general);
+            sessionStorage.setItem("jwtToken", getToken);
+            this.getRouter().navTo("dashboard");
+            oModel.refresh();
+            this.showLoading(false);
         }
     });
 });
