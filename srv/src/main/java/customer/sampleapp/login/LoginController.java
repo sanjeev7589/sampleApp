@@ -27,12 +27,16 @@ public class LoginController {
     private JwtService jwtService;
     @PostMapping(value = "/get")
     public String authenticateAndGetToken(@RequestBody Login login) {
+        try {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(login.getName(), login.getPassword()));
         if (authentication.isAuthenticated()) {
             return jwtService.generateToken(login.getName());
         } else {
             throw new UsernameNotFoundException("invalid user request");
+        }
+        } catch (Exception e) {
+            throw e;
         }
     }
 }

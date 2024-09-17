@@ -48,12 +48,12 @@
                                                 <f:GridContainerSettings rowSize="45px" columnSize="70px" gap="12px" />
                                             </f:layoutXS>
 
-                                            <GenericTile sizeBehavior="Responsive"  subheader="Employee" press="onPressTile" app:route="employee" app:key="1">
+                                            <GenericTile sizeBehavior="Responsive"  subheader="Create User" press="onPressTile" app:route="addUser" app:key="1">
                                                 <layoutData>
                                                     <f:GridContainerItemLayoutData minRows="2" columns="2" />
                                                 </layoutData>
                                                 <TileContent >
-                                                    <ImageContent src="sap-icon://bbyd-dashboard" class="sapUiTinyMarginBegin"/>
+                                                    <ImageContent src="sap-icon://create-form" class="sapUiTinyMarginBegin"/>
                                                 </TileContent>
                                             </GenericTile>
                                             <!-- <GenericTile header="Voyages" subheader="Vessel Travel Log" press="onPressTile" app:route="voyagesMaster" app:key="1">

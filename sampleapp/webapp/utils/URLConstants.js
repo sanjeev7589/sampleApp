@@ -4,7 +4,7 @@ sap.ui.define([], function () {
         URL: {
             app_end_point: "http://localhost:8081/",
             employees_all : "Employees/all",
-            dummy: "auth/user",
+            add_edit_user:"user/add",
             login_get: "login/get"  
         }
 

@@ -131,6 +131,23 @@ sap.ui.define(
 
         return deferred.promise();
       },
+      restMethodPost: function (url, request) {
+        url = URLConstants.URL.app_end_point+ url;
+        var deferred = $.Deferred();
+        $.ajax({
+          type: 'POST',
+          url: url,
+          data: JSON.stringify(request),
+          contentType: "application/json",
+          success: function (response) {
+            deferred.resolve(response);
+          },
+          error: function (xhr) {
+            deferred.reject(xhr);
+          }
+        });
+        return deferred.promise();
+      },
       restMethodPostLogin: function (url, request) {
         url = URLConstants.URL.app_end_point+ url;
         var deferred = $.Deferred();

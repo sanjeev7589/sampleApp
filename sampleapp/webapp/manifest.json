@@ -91,10 +91,10 @@
           ]
         },
         {
-          "name": "employee",
-          "pattern": "employee",
+          "name": "addUser",
+          "pattern": "addUser",
           "target": [
-            "Employee"
+            "CreateUsers"
           ]
         },
         {
@@ -129,11 +129,11 @@
           "viewId": "Dashboard",
           "viewName": "init.Dashboard"
         },
-        "Employee": {
+        "CreateUsers": {
           "viewType": "XML",
           "transition": "slide",
-          "viewId": "Employee",
-          "viewName": "view.Employee"
+          "viewId": "CreateUsers",
+          "viewName": "users.CreateUsers"
         },
         "EmployeeDetails": {
           "viewType": "XML",
